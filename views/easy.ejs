@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Easy Daily Codebreaker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Share Tech' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="/styles/difficulty.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/theme/3024-night.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/clike/clike.min.js"></script>
+</head>
+<body>
+    <h1>Easy Daily Codebreaker - Day <%= date %></h1>
+    <div class="container">
+        <div class="question-details">
+            <h2>Question: <%= dailyQuestion.title %></h2>
+            <h3><%= dailyQuestion.description %></h3>
+            <p>Examples: </p>
+            <% for(testCase in dailyQuestion.testCases){ %>
+                <p>Input: <%- JSON.stringify(dailyQuestion.testCases[testCase].input) %> </p>
+                <p>Output: <%- JSON.stringify(dailyQuestion.testCases[testCase].output) %> </p>
+            <% } %>
+            <br>
+            <p>Your Input: <%- JSON.stringify(dailyQuestion.UserQuestion.input) %></p>
+        </div>
+        <div class="user-response">
+            <form action="/easy" method="post">
+                <label for="languageSelection">Select your language: </label>
+                <select name="languageSelection" id="languageSelection">
+                    <option value="python3">Python</option>
+                    <option value="java">Java</option>
+                    <option value="cpp14">C++</option>
+                    <option value="c">C</option>
+                </select>
+                <br><br>
+                <div id="code-mirror">
+                    <textarea name="code" rows="25" id="code"></textarea>
+                </div>
+                <br>
+                <div class="button-container">
+                    <button id="compile-button" type="submit">Compile</button>
+                </div>
+            </form>
+            <% if (locals.response) { %>
+                <h3>Output:</h3>
+                <pre><%= response.output %></pre>
+                <% 
+                var correctAnswer = dailyQuestion.UserQuestion.output;
+                var userResponse = response.output.trim();
+                console.log(JSON.stringify(correctAnswer));
+                console.log(userResponse);
+
+                if (userResponse === JSON.stringify(correctAnswer)) { %>
+                    <p>Correct!</p>
+                <% } else { %>    
+                    <p>Incorrect!</p>
+                <% } %> 
+            <% } %>
+            
+
+        </div>
+    </div>
+
+
+    <script>
+        var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+            lineNumbers: true,
+            mode: 'text/x-python',
+            theme: '3024-night',
+        });
+    </script>
+
+
+</body>
+</html>
