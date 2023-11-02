@@ -1,4 +1,4 @@
-Daily Codebreaker: Daily Coding Challenges Platform
+Daily Codebreaker: Daily Coding Challenges
 
 Daily Codebreaker is an interactive web application inspired by the popular Wordle game, tailored for coders to sharpen their programming skills. The platform presents users with a fresh coding challenge every day, categorized by difficulty level. Upon visiting the home screen, users can select a challenge based on their expertise—beginner, intermediate, or advanced.
 
