@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Add Two Numbers",
+    "description": "You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list. You may assume the two numbers do not contain any leading zero, except the number 0 itself.",
+    "difficulty": "Medium",
+    "testCases": {
+      "1": {
+        "input": {"list1": [2, 4, 3], "list2": [5, 6, 4]},
+        "output": [7, 0, 8]
+      },
+      "2": {
+        "input": {"list1": [0], "list2": [0]},
+        "output": [0]
+      },
+      "3": {
+        "input": {"list1": [9,9,9,9,9,9,9], "list2": [9,9,9,9]},
+        "output": [8,9,9,9,0,0,0,1]
+      }
+    }, 
+    "UserQuestion": {
+      "input": {"list1": [5, 6, 4], "list2": [3, 8, 2]},
+      "output": [8, 4, 7]
+    }
+  },
+  {
+    "id": 2,
+    "title": "Letter Combinations of a Phone Number",
+    "description": "Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order. Note that 1 does not map to any letters.",
+    "difficulty": "Medium",
+    "testCases": {
+      "1": {
+        "input": {"digits": "23"},
+        "output": ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+      },
+      "2": {
+        "input": {"digits": ""},
+        "output": []
+      },
+      "3": {
+        "input": {"digits": "2"},
+        "output": ["a","b","c"]
+      }
+    },
+    "UserQuestion": {
+      "input": {"digits": "79"},
+      "output": ["pw","px","py","pz","qw","qx","qy","qz","rw","rx","ry","rz","sw","sx","sy","sz"]
+    }    
+  },
+  {
+    "id": 3,
+    "title": "Swap Nodes in Pairs",
+    "description": "Given a linked list, swap every two adjacent nodes and return its head. You must solve the problem without modifying the values in the list's nodes (i.e., only nodes themselves may be changed.)",
+    "difficulty": "Medium",
+    "testCases": {
+      "1": {
+        "input": {"list": [1,2,3,4]},
+        "output": [2,1,4,3]
+      },
+      "2": {
+        "input": {"list": []},
+        "output": []
+      },
+      "3": {
+        "input": {"list": [1]},
+        "output": [1]
+      }
+    },
+    "UserQuestion": {
+      "input": {"list": [1, 2, 3, 4, 5]},
+      "output": [2, 1, 4, 3, 5]
+    }    
+  }
+]
