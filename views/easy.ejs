@@ -15,7 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/clike/clike.min.js"></script>
 </head>
 <body>
-    <h1>Easy Daily Codebreaker - Day <%= date %></h1>
+    <h1>Easy Daily Codebreaker - Day <%= locals.date %></h1>
     <div class="container">
         <div class="question-details">
             <h2>Question: <%= dailyQuestion.title %></h2>
@@ -49,17 +49,11 @@
             <% if (locals.response) { %>
                 <h3>Output:</h3>
                 <pre><%= response.output %></pre>
-                <% 
-                var correctAnswer = dailyQuestion.UserQuestion.output;
-                var userResponse = response.output.trim();
-                console.log(JSON.stringify(correctAnswer));
-                console.log(userResponse);
-
-                if (userResponse === JSON.stringify(correctAnswer)) { %>
-                    <p>Correct!</p>
-                <% } else { %>    
-                    <p>Incorrect!</p>
-                <% } %> 
+                <button id="showSolution">Show True Solution</button>
+                <div id="trueSolution" style="display:none;">
+                    <h3>True Solution:</h3>
+                    <pre><%= dailyQuestion.UserQuestion.output %></pre>
+                </div>
             <% } %>
             
 
@@ -72,6 +66,10 @@
             lineNumbers: true,
             mode: 'text/x-python',
             theme: '3024-night',
+        });
+
+        document.getElementById('showSolution').addEventListener('click', function() {
+        document.getElementById('trueSolution').style.display = 'block';
         });
     </script>
 

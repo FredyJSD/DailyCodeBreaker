@@ -76,3 +76,11 @@ textarea:focus {
     display: flex;
     justify-content: center;
 }
+
+#showSolution{
+    background-color: rgb(51, 218, 224);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: .3rem 1rem;
+}

@@ -15,7 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/clike/clike.min.js"></script>
 </head>
 <body>
-    <h1>Medium Daily Codebreaker</h1>
+    <h1>Medium Daily Codebreaker - Day <%= locals.date %></h1>
     <div class="container">
         <div class="question-details">
             <h2>Question: <%= dailyQuestion.title %></h2>
@@ -49,6 +49,11 @@
             <% if (locals.response) { %>
                 <h3>Output:</h3>
                 <pre><%= response.output %></pre>
+                <button id="showSolution">Show True Solution</button>
+                <div id="trueSolution" style="display:none;">
+                    <h3>True Solution:</h3>
+                    <pre><%= dailyQuestion.UserQuestion.output %></pre>
+                </div>
             <% } %>
         </div>
     </div>
@@ -58,6 +63,10 @@
             lineNumbers: true,
             mode: 'text/x-python',
             theme: '3024-night',
+        });
+
+        document.getElementById('showSolution').addEventListener('click', function() {
+        document.getElementById('trueSolution').style.display = 'block';
         });
     </script>
 </body>
