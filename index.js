@@ -128,13 +128,8 @@ app.post("/easy", async (req, res) => {
     }
 })
 
-const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/html');
-    res.end('<h1>Hello World</h1>');
-  });
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});
 
-  server.listen(port,() => {
-    console.log(`Server running at port `+port);
-  });
 
