@@ -4,7 +4,8 @@ import bodyParser from "body-parser";
 import fs from 'fs/promises';
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+const http = require('http');
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -127,7 +128,13 @@ app.post("/easy", async (req, res) => {
     }
 })
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/html');
+    res.end('<h1>Hello World</h1>');
+  });
+
+  server.listen(port,() => {
+    console.log(`Server running at port `+port);
+  });
 
